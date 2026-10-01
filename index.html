@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Artzy · AI artist & builder</title>
-<meta name="description" content="Artzy lives in art. AI artist, builder and KOL manager in crypto since 2021. Builds with Ledger, community with Base.">
-<meta property="og:title" content="Artzy · AI artist & builder">
+<title>Artzy · AI creative & content creator</title>
+<meta name="description" content="Artzy lives in art. AI creative and content creator: AI videos, art, guides and tools. Deep in AI since ChatGPT launched, in crypto since 2021.">
+<meta property="og:title" content="Artzy · AI creative & content creator">
 <meta property="og:description" content="Artzy lives in art. AI films, agent builds and community work across AI and web3.">
 <meta property="og:image" content="https://webartzy.github.io/assets/og.png">
 <meta property="og:type" content="website">
@@ -80,6 +80,20 @@ nav ul a:hover{color:var(--paper)}
 .do-card h3{font-size:20px;font-weight:800}
 .do-card p{color:var(--muted);font-size:15px}
 
+/* story */
+.story{display:grid;gap:22px;border-top:1px solid var(--line);padding-top:36px}
+.story .big{font:800 clamp(28px,4vw,46px)/1.08 var(--display);font-stretch:108%;max-width:24ch;text-wrap:balance}
+.story .big em{font-style:normal;color:var(--red-text)}
+.story-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;color:var(--muted);font-size:18px}
+
+/* video formats */
+.formats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.format{border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;gap:10px;align-content:start;background:linear-gradient(180deg,var(--panel),var(--ink))}
+.format h3{font-size:24px;font-weight:900;font-stretch:112%}
+.format p{color:var(--muted);font-size:16px}
+.btn-line{justify-self:start;text-decoration:none;font-family:var(--pixel);font-size:12px;text-transform:uppercase;border-bottom:2px solid var(--red);padding-bottom:4px}
+.btn-line:hover{color:var(--red-text)}
+
 /* experience timeline */
 .timeline{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
 .job{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding-block:26px;border-bottom:1px solid var(--line);align-items:start}
@@ -128,6 +142,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
   .job{grid-template-columns:1fr;gap:10px}
 }
 @media (max-width:720px){
+  .story-cols,.formats{grid-template-columns:1fr}
   .hero{grid-template-columns:1fr;padding:28px 22px}
   .hero-art{order:-1;justify-items:start}
   .sticker{width:min(64%,240px)}
@@ -155,10 +170,10 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
 
   <header class="hero" id="top">
     <div class="hero-copy">
-      <p class="px">AI artist · builder · KOL manager</p>
+      <p class="px">AI creative · content creator · builder</p>
       <h1>Artzy</h1>
       <p class="tag">Artzy lives in art.</p>
-      <p class="intro">I make AI films and art, build small tools that show where AI meets web3, and bring creators together. In crypto since 2021, and a self-custody believer.</p>
+      <p class="intro">I'm a creative first. I turn new AI tools into videos, art and stories people actually want to watch, and I build my own tools along the way. Deep in AI since the day ChatGPT launched, in crypto since 2021.</p>
       <div class="cta-row">
         <a class="btn" href="#contact">Work with me</a>
         <a class="btn ghost" href="https://x.com/heyartzy" target="_blank" rel="noopener">Follow on X ↗</a>
@@ -177,25 +192,56 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
   </header>
 
   <div class="facts">
+    <div class="fact"><b>2022</b><span>deep in AI since ChatGPT launched</span></div>
+    <div class="fact"><b>Daily</b><span>creating and building with AI</span></div>
     <div class="fact"><b>2021</b><span>in crypto since</span></div>
-    <div class="fact"><b>200+</b><span>KOLs worked with on campaigns</span></div>
-    <div class="fact"><b>4</b><span>open-source builds shipped</span></div>
-    <div class="fact"><b>Op3n</b><span>community activation winner</span></div>
+    <div class="fact"><b>Op3n</b><span>AI short film, activation winner</span></div>
   </div>
 
-  <section aria-labelledby="do">
-    <div class="head"><p class="px red">What I do</p><h2 id="do">Art, builds and people</h2></div>
-    <div class="do">
-      <div class="do-card"><span class="ic">01</span><h3>AI films &amp; art</h3><p>Short cinematic videos and AI art. Story first, product second.</p></div>
-      <div class="do-card"><span class="ic">02</span><h3>Vibe-coded builds</h3><p>Small open-source tools that turn an AI × web3 idea into a demo people can try.</p></div>
-      <div class="do-card"><span class="ic">03</span><h3>KOL management</h3><p>I brief, coordinate and review creators on campaigns, from first DM to final report.</p></div>
-      <div class="do-card"><span class="ic">04</span><h3>Community</h3><p>Moderating, onboarding and showing up in the replies every day.</p></div>
+  <section aria-labelledby="story">
+    <div class="story">
+      <p class="px red">My story</p>
+      <p class="big">The day ChatGPT launched, I went all in on AI creativity. <em>I haven't stopped since.</em></p>
+      <div class="story-cols">
+        <p>I've watched every wave up close: the first chatbots, the image models, the video models, and now agents. I don't just read about the updates. I open them on day one, test them, and use them in my work every single day.</p>
+        <p>When a tool I need doesn't exist, I build it. That's how FinalSay and Agent Pays Agent started. Everything I learn turns into content, so the people who follow me get the honest version: what works, what breaks, and how to make something good with it.</p>
+      </div>
     </div>
   </section>
 
+  <section aria-labelledby="do">
+    <div class="head"><p class="px red">What I do</p><h2 id="do">Creative work, made with AI</h2></div>
+    <div class="do">
+      <div class="do-card"><span class="ic">01</span><h3>AI video</h3><p>Cinematic shorts, brand and product videos, character and fashion pieces, and practical tutorials. I write, prompt, direct and edit every one.</p></div>
+      <div class="do-card"><span class="ic">02</span><h3>Content creation</h3><p>Posts, threads, X articles and guides that turn new AI tools into something people can use today. Plus a daily build journal.</p></div>
+      <div class="do-card"><span class="ic">03</span><h3>AI art &amp; direction</h3><p>Visual concepts, storyboards and style boards. I care about the idea before the prompt.</p></div>
+      <div class="do-card"><span class="ic">04</span><h3>Tools I build</h3><p>Vibe-coded tools for my own workflow and open-source demos where AI meets web3.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="video">
+    <div class="head"><p class="px red">Video</p><h2 id="video">Videos that tell a story</h2></div>
+    <div class="formats">
+      <div class="format"><h3>Cinematic AI shorts</h3><p>Story-led films made with the newest video models. My short for Ledger Op3n won the community activation.</p><span class="px red">Story · mood · pacing</span></div>
+      <div class="format"><h3>Brand &amp; product videos</h3><p>Launches, features and announcements told as a story, not an ad. Made for brands in AI and web3.</p><span class="px red">Concept to final cut</span></div>
+      <div class="format"><h3>Tutorials &amp; walkthroughs</h3><p>Screen recordings and step-by-step guides that show a tool working for real, from install to result.</p><span class="px red">Practical · honest</span></div>
+      <div class="format"><h3>Character &amp; fashion</h3><p>Consistent characters, outfit transitions and style boards turned into motion. I wrote a guide on keeping faces and scenes consistent.</p><span class="px red">Consistency · craft</span></div>
+    </div>
+    <a class="btn-line" href="https://x.com/heyartzy/media" target="_blank" rel="noopener">Watch my latest videos on X ↗</a>
+  </section>
+
   <section id="experience" aria-labelledby="exp">
-    <div class="head"><p class="px red">Experience</p><h2 id="exp">Where I've worked</h2></div>
+    <div class="head"><p class="px red">Experience</p><h2 id="exp">Experience</h2></div>
     <ol class="timeline">
+      <li class="job">
+        <span class="when">2022 – now</span>
+        <div class="org"><h3>Artzy</h3><span>AI creative · content creator</span></div>
+        <ul>
+          <li>Creating with AI daily since ChatGPT launched: videos, art, guides and tools</li>
+          <li><strong>AI videos and content</strong> for brands and communities in AI and web3</li>
+          <li>Building in public with a daily journal and open-source tools</li>
+        </ul>
+      </li>
       <li class="job">
         <span class="when">2025 – now</span>
         <div class="org"><h3>Ledger</h3><span>Discord admin · inner circle</span></div>
@@ -279,7 +325,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
   <section id="contact" aria-labelledby="ct">
     <div class="contact">
       <div>
-        <p class="px">Collaborations · campaigns · videos</p>
+        <p class="px">AI videos · content · brand collabs</p>
         <h2 id="ct">Let's make something</h2>
         <div class="mail">
           <a href="mailto:onchainartzy@gmail.com" id="mail">onchainartzy@gmail.com</a>
