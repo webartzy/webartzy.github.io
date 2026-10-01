@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Artzy · AI artist & builder</title>
+<meta name="description" content="Artzy lives in art. AI artist, builder and KOL manager in crypto since 2021. Builds with Ledger, community with Base.">
+<meta property="og:title" content="Artzy · AI artist & builder">
+<meta property="og:description" content="Artzy lives in art. AI films, agent builds and community work across AI and web3.">
+<meta property="og:image" content="https://webartzy.github.io/assets/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@heyartzy">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="assets/avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Silkscreen:wght@400;700&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one column, red PFP hero, then experience as a dated timeline, builds, and a link stack that doubles as the Instagram bio page. */
+:root{
+  --ink:#0a0a0a; --panel:#141313; --panel-2:#1c1a1a; --line:#2b2828;
+  --paper:#f5f2ee; --muted:#a39d99; --red:#b01f1c; --red-text:#ef4a43; --white:#ffffff;
+  --display:"Archivo", "Arial Black", Impact, sans-serif;
+  --body:"Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pixel:"Silkscreen", "Courier New", monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+p{margin:0}
+h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:20px 56px}
+.px{font-family:var(--pixel);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.red{color:var(--red-text)}
+.muted{color:var(--muted)}
+h2{font-size:clamp(32px,5vw,56px);line-height:.95;font-weight:900;font-stretch:115%;text-transform:uppercase;letter-spacing:-.01em}
+section{padding-block:72px 0;display:grid;gap:28px}
+.head{display:grid;gap:12px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-block:4px 18px}
+nav .me{display:flex;align-items:center;gap:10px;text-decoration:none}
+nav .me img{width:32px;height:32px;border-radius:8px;border:2px solid var(--white)}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--paper)}
+
+/* hero */
+.hero{position:relative;background:var(--red);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:20px;padding:44px}
+.hero-copy{display:flex;flex-direction:column;gap:22px;justify-content:center;color:var(--white)}
+.hero h1{font-size:clamp(64px,11vw,136px);line-height:.8;font-weight:900;font-stretch:125%;letter-spacing:-.02em;text-transform:uppercase}
+.tag{font:800 clamp(26px,3.4vw,40px)/1.05 var(--display);font-stretch:110%}
+.intro{font-size:clamp(17px,1.8vw,20px);max-width:38ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--pixel);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:7px 10px;border-radius:6px;background:var(--ink);color:var(--white)}
+.hero-art{position:relative;display:grid;place-items:center;min-width:0}
+.sticker{width:min(100%,340px);aspect-ratio:1;transform:rotate(4deg);border:10px solid var(--white);border-radius:28px;overflow:hidden;box-shadow:0 24px 40px rgba(0,0,0,.35);background:var(--ink);transition:transform .4s}
+.sticker:hover{transform:rotate(0deg) scale(1.02)}
+.sticker img{width:100%;height:100%;object-fit:cover}
+.glasses{position:absolute;left:-6px;bottom:8%;width:42%;max-width:170px;transform:rotate(-8deg)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border-radius:12px;background:var(--ink);color:var(--white);text-decoration:none;font-family:var(--pixel);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.btn.ghost{background:transparent;border:2px solid var(--white)}
+
+/* numbers strip */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+.fact{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:grid;gap:4px}
+.fact b{font:900 clamp(30px,3.6vw,42px)/1 var(--display);font-stretch:112%}
+.fact span{font-size:14px;color:var(--muted)}
+
+/* what I do */
+.do{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.do-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:10px;align-content:start}
+.do-card .ic{width:34px;height:34px;border-radius:8px;background:var(--red);display:grid;place-items:center;font-family:var(--pixel);font-size:14px;color:var(--white)}
+.do-card h3{font-size:20px;font-weight:800}
+.do-card p{color:var(--muted);font-size:15px}
+
+/* experience timeline */
+.timeline{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
+.job{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding-block:26px;border-bottom:1px solid var(--line);align-items:start}
+.job .when{font-family:var(--pixel);font-size:12px;color:var(--red-text);padding-top:6px}
+.job .org{display:grid;gap:4px}
+.job .org h3{font-size:clamp(24px,3vw,32px);font-weight:900;font-stretch:118%;text-transform:uppercase;line-height:1}
+.job .org span{font-weight:600}
+.job ul{margin:0;padding-left:18px;color:var(--muted);display:grid;gap:6px;font-size:16px}
+.job ul strong{color:var(--paper);font-weight:600}
+.badge{display:inline-block;background:var(--white);color:var(--ink);font-family:var(--pixel);font-size:10px;padding:4px 7px;border-radius:5px;text-transform:uppercase;margin-left:6px;vertical-align:middle}
+
+/* builds */
+.builds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.build{display:grid;gap:12px;align-content:start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none;transition:border-color .2s,transform .2s}
+.build:hover{border-color:var(--red);transform:translateY(-2px)}
+.build .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.build h3{font-size:24px;font-weight:900;font-stretch:112%}
+.build p{color:var(--muted);font-size:15px}
+.build .stack{display:flex;flex-wrap:wrap;gap:6px}
+.build .stack span{font-family:var(--pixel);font-size:10px;text-transform:uppercase;padding:5px 7px;border-radius:5px;background:var(--panel-2);color:var(--paper)}
+.build .go{font-family:var(--pixel);font-size:11px;color:var(--red-text)}
+
+/* links stack (Instagram bio target) */
+.links-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
+.links{display:grid;gap:10px}
+.link{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;border-radius:14px;background:var(--panel);border:1px solid var(--line);text-decoration:none;transition:background .2s,border-color .2s}
+.link:hover{background:var(--red);border-color:var(--red)}
+.link b{font:800 20px/1.1 var(--display);font-stretch:108%}
+.link small{display:block;color:var(--muted);font-size:13px;margin-top:3px}
+.link:hover small{color:var(--white)}
+.link .arr{font-family:var(--pixel);font-size:14px}
+
+/* contact */
+.contact{background:var(--red);border-radius:24px;padding:40px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;color:var(--white)}
+.contact h2{font-size:clamp(36px,6vw,72px)}
+.mail{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.mail a{font:800 clamp(20px,2.6vw,28px) var(--display);font-stretch:105%;text-decoration:none;border-bottom:3px solid var(--white);word-break:break-all}
+.copy{font-family:var(--pixel);font-size:11px;padding:7px 11px;border-radius:6px;border:1px solid rgba(255,255,255,.6);background:transparent;color:var(--white);cursor:pointer}
+.mini{width:140px;aspect-ratio:1;border:8px solid var(--white);border-radius:22px;overflow:hidden;transform:rotate(-5deg)}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);padding-top:32px}
+
+@media (max-width:900px){
+  .do,.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .builds{grid-template-columns:1fr}
+  .links-wrap{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:10px}
+}
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;padding:28px 22px}
+  .hero-art{order:-1;justify-items:start}
+  .sticker{width:min(64%,240px)}
+  .glasses{left:auto;right:6%;bottom:6%;width:34%}
+  nav ul{display:none}
+  .contact{grid-template-columns:1fr;padding:28px 22px}
+  .mini{display:none}
+}
+@media (max-width:420px){ .do,.facts{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .sticker,.build,.link{transition:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <a class="me" href="#top"><img src="assets/avatar.jpg" alt=""><span class="px">@heyartzy</span></a>
+    <ul class="px">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#builds">Builds</a></li>
+      <li><a href="#links">Links</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-copy">
+      <p class="px">AI artist · builder · KOL manager</p>
+      <h1>Artzy</h1>
+      <p class="tag">Artzy lives in art.</p>
+      <p class="intro">I make AI films and art, build small tools that show where AI meets web3, and bring creators together. In crypto since 2021, and a self-custody believer.</p>
+      <div class="cta-row">
+        <a class="btn" href="#contact">Work with me</a>
+        <a class="btn ghost" href="https://x.com/heyartzy" target="_blank" rel="noopener">Follow on X ↗</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="sticker"><img src="assets/avatar.jpg" alt="Artzy in pixel sunglasses on his red sticker-art background"></div>
+      <svg class="glasses" viewBox="0 0 34 8" aria-hidden="true" shape-rendering="crispEdges">
+        <rect x="0" y="0" width="34" height="2" fill="#0a0a0a"/>
+        <rect x="3" y="2" width="12" height="3" fill="#0a0a0a"/><rect x="4" y="5" width="10" height="1" fill="#0a0a0a"/><rect x="5" y="6" width="8" height="1" fill="#0a0a0a"/>
+        <rect x="19" y="2" width="12" height="3" fill="#0a0a0a"/><rect x="20" y="5" width="10" height="1" fill="#0a0a0a"/><rect x="21" y="6" width="8" height="1" fill="#0a0a0a"/>
+        <rect x="5" y="2" width="2" height="1" fill="#ffffff"/><rect x="7" y="3" width="2" height="1" fill="#ffffff"/>
+        <rect x="21" y="2" width="2" height="1" fill="#ffffff"/><rect x="23" y="3" width="2" height="1" fill="#ffffff"/>
+      </svg>
+    </div>
+  </header>
+
+  <div class="facts">
+    <div class="fact"><b>2021</b><span>in crypto since</span></div>
+    <div class="fact"><b>200+</b><span>KOLs worked with on campaigns</span></div>
+    <div class="fact"><b>4</b><span>open-source builds shipped</span></div>
+    <div class="fact"><b>Op3n</b><span>community activation winner</span></div>
+  </div>
+
+  <section aria-labelledby="do">
+    <div class="head"><p class="px red">What I do</p><h2 id="do">Art, builds and people</h2></div>
+    <div class="do">
+      <div class="do-card"><span class="ic">01</span><h3>AI films &amp; art</h3><p>Short cinematic videos and AI art. Story first, product second.</p></div>
+      <div class="do-card"><span class="ic">02</span><h3>Vibe-coded builds</h3><p>Small open-source tools that turn an AI × web3 idea into a demo people can try.</p></div>
+      <div class="do-card"><span class="ic">03</span><h3>KOL management</h3><p>I brief, coordinate and review creators on campaigns, from first DM to final report.</p></div>
+      <div class="do-card"><span class="ic">04</span><h3>Community</h3><p>Moderating, onboarding and showing up in the replies every day.</p></div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp">
+    <div class="head"><p class="px red">Experience</p><h2 id="exp">Where I've worked</h2></div>
+    <ol class="timeline">
+      <li class="job">
+        <span class="when">2025 – now</span>
+        <div class="org"><h3>Ledger</h3><span>Discord admin · inner circle</span></div>
+        <ul>
+          <li>Admin of the Ledger Discord community</li>
+          <li><strong>Won the Ledger Op3n community activation</strong> (Oct 2025) with a story-led AI short film <span class="badge">Winner</span></li>
+          <li>Built UX demos on Ledger's newest features for real use cases: <strong>Agent Pays Agent</strong> and <strong>FinalSay</strong></li>
+        </ul>
+      </li>
+      <li class="job">
+        <span class="when">2025 – now</span>
+        <div class="org"><h3>NabuLines</h3><span>KOL manager</span></div>
+        <ul>
+          <li>Joined in mid-2025, became KOL manager in early 2026</li>
+          <li>Worked with <strong>200+ KOLs</strong> across campaigns</li>
+          <li>Creator briefs, coordination, content review and reporting</li>
+        </ul>
+      </li>
+      <li class="job">
+        <span class="when">Until 2025</span>
+        <div class="org"><h3>Base</h3><span>Artist · inner circle · trusted video maker</span></div>
+        <ul>
+          <li>Artist in the Base community and part of its inner circle</li>
+          <li>Trusted video maker for the community</li>
+          <li>Followed by Base on X</li>
+        </ul>
+      </li>
+      <li class="job">
+        <span class="when">Now</span>
+        <div class="org"><h3>ImagineArt</h3><span>Creator program</span></div>
+        <ul>
+          <li>Short AI films and fashion videos made with their models</li>
+          <li>Prompts shared openly so others can learn the workflow</li>
+        </ul>
+      </li>
+      <li class="job">
+        <span class="when">2021</span>
+        <div class="org"><h3>Crypto</h3><span>Where it started</span></div>
+        <ul>
+          <li>Entered crypto in 2021 and never left</li>
+          <li>Self-custody believer, focused on pushing AI forward with web3</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section id="builds" aria-labelledby="bld">
+    <div class="head"><p class="px red">Builds</p><h2 id="bld">Things I've shipped</h2></div>
+    <div class="builds">
+      <a class="build" href="https://github.com/webartzy/final-say" target="_blank" rel="noopener">
+        <div class="top"><h3>FinalSay</h3><span class="go">GitHub ↗</span></div>
+        <p>An AI payroll agent that can't press send. AI prepares, Ledger shows, a human decides.</p>
+        <div class="stack"><span>Ledger</span><span>Rust</span><span>React</span><span>AI agent</span></div>
+      </a>
+      <a class="build" href="https://github.com/webartzy/agent-pays-agent-" target="_blank" rel="noopener">
+        <div class="top"><h3>Agent Pays Agent</h3><span class="go">GitHub ↗</span></div>
+        <p>An agent starts a USDC payment through x402. A human approves it on Ledger before anything moves.</p>
+        <div class="stack"><span>x402</span><span>USDC</span><span>Ledger</span></div>
+      </a>
+      <a class="build" href="https://ai-behavior-designer.vercel.app" target="_blank" rel="noopener">
+        <div class="top"><h3>AI Behavior Designer</h3><span class="go">Live ↗</span></div>
+        <p>Design how an AI should behave before writing a single prompt. Open-source playground for builders.</p>
+        <div class="stack"><span>Open source</span><span>Playground</span></div>
+      </a>
+    </div>
+    <p class="muted" style="font-size:15px">More on <a href="https://github.com/webartzy" target="_blank" rel="noopener">github.com/webartzy</a></p>
+  </section>
+
+  <section id="links" aria-labelledby="lnk">
+    <div class="links-wrap">
+      <div class="head"><p class="px red">Links</p><h2 id="lnk">Find me here</h2><p class="muted">New work goes up on X first. Everything else lives here.</p></div>
+      <div class="links">
+        <a class="link" href="https://x.com/heyartzy" target="_blank" rel="noopener"><span><b>X · @heyartzy</b><small>Daily takes on AI, builds and web3</small></span><span class="arr">↗</span></a>
+        <a class="link" href="https://github.com/webartzy" target="_blank" rel="noopener"><span><b>GitHub</b><small>Open-source builds</small></span><span class="arr">↗</span></a>
+        <a class="link" href="https://ai-behavior-designer.vercel.app" target="_blank" rel="noopener"><span><b>AI Behavior Designer</b><small>Try the live tool</small></span><span class="arr">↗</span></a>
+        <a class="link" href="#contact"><span><b>Work with me</b><small>Campaigns, videos, collaborations</small></span><span class="arr">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="ct">
+    <div class="contact">
+      <div>
+        <p class="px">Collaborations · campaigns · videos</p>
+        <h2 id="ct">Let's make something</h2>
+        <div class="mail">
+          <a href="mailto:onchainartzy@gmail.com" id="mail">onchainartzy@gmail.com</a>
+          <button class="copy" id="copy" type="button">Copy</button>
+        </div>
+      </div>
+      <div class="mini"><img src="assets/avatar.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <footer class="px"><span>Artzy · lives in art</span><span>© 2026</span></footer>
+</div>
+<script>
+document.getElementById('copy').addEventListener('click',function(){
+  var b=this, v='onchainartzy@gmail.com';
+  function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1400)}
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  try{navigator.clipboard.writeText(v).then(done,sel)}catch(e){sel()}
+});
+</script>
+</body>
+</html>
