@@ -444,7 +444,7 @@ var WORK=[
 (function(){
   var face=document.getElementById('face'),stage=face.parentNode,glasses=document.querySelector('.glasses'),glint=document.getElementById('glint');
   /* set to true after adding assets/look-l.jpg and assets/look-r.jpg (same framing, looking left and right) */
-  var HAS_LOOKS=false;
+  var HAS_LOOKS=true;
   var shine=face.querySelector('.shine'),C=face.querySelector('.look-c'),L=null,R=null;
   if(HAS_LOOKS){['l','r'].forEach(function(k){var im=document.createElement('img');im.className='look-'+k;im.alt='';im.src='assets/look-'+k+'.jpg';C.after(im);if(k==='l')L=im;else R=im;});}
   var still=matchMedia('(prefers-reduced-motion: reduce)').matches,raf=0,px=0,py=0,idle=null;
