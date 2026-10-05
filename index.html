@@ -59,10 +59,56 @@ nav ul a:hover{color:var(--paper)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font-family:var(--pixel);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:7px 10px;border-radius:6px;background:var(--ink);color:var(--white)}
 .hero-art{position:relative;display:grid;place-items:center;min-width:0}
-.sticker{width:min(100%,340px);aspect-ratio:1;transform:rotate(4deg);border:10px solid var(--white);border-radius:28px;overflow:hidden;box-shadow:0 24px 40px rgba(0,0,0,.35);background:var(--ink);transition:transform .4s}
-.sticker:hover{transform:rotate(0deg) scale(1.02)}
-.sticker img{width:100%;height:100%;object-fit:cover}
-.glasses{position:absolute;left:-6px;bottom:8%;width:42%;max-width:170px;transform:rotate(-8deg)}
+.face-stage{width:min(100%,340px);aspect-ratio:1;perspective:900px}
+.sticker{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotate(4deg) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out;cursor:pointer;border:0;padding:0;background:none}
+.sticker.flip{transform:rotate(4deg) rotateY(180deg);transition:transform .6s}
+.side{position:absolute;inset:0;border:10px solid var(--white);border-radius:28px;overflow:hidden;box-shadow:0 24px 40px rgba(0,0,0,.35);backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--ink)}
+.side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.side .look-l,.side .look-r{opacity:0}
+.side.back{transform:rotateY(180deg);background:var(--ink);display:grid;align-content:center;gap:10px;padding:22px;text-align:left}
+.side.back b{font:900 clamp(19px,2.3vw,26px)/1.05 var(--display);font-stretch:112%;color:var(--white);text-transform:uppercase}
+.side.back p{color:var(--muted);font-size:13px;line-height:1.4}
+.side.back .px{color:var(--red-text)}
+.shine{position:absolute;inset:0;border-radius:18px;background:radial-gradient(circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.22),transparent 45%);pointer-events:none;mix-blend-mode:screen}
+.glasses{position:absolute;left:-6px;bottom:8%;width:42%;max-width:170px;transform:rotate(-8deg) translate(var(--gx,0px),var(--gy,0px));transition:transform .18s ease-out;pointer-events:none}
+.hint{position:absolute;right:4px;bottom:-6px;font-family:var(--pixel);font-size:10px;text-transform:uppercase;color:var(--white);opacity:.85;transform:rotate(-4deg)}
+
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);margin-top:14px}
+.track{display:flex;width:max-content;animation:roll 34s linear infinite}
+.track span{font-family:var(--pixel);font-size:14px;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:28px;padding:14px 14px}
+.track span::after{content:"";width:8px;height:8px;background:var(--red)}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* work with filters */
+.work-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font-family:var(--pixel);font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:var(--white)}
+.work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.item{display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none;transition:border-color .2s,transform .2s}
+.item:hover{border-color:var(--red);transform:translateY(-2px)}
+.item .meta{display:flex;justify-content:space-between;gap:10px;font-family:var(--pixel);font-size:10px;text-transform:uppercase;color:var(--muted)}
+.item .status{color:var(--white);background:var(--red);padding:3px 7px;border-radius:5px}
+.item .status.live{background:var(--white);color:var(--ink)}
+.item h3{font-size:22px;font-weight:900;font-stretch:110%;line-height:1.1}
+.item p{color:var(--muted);font-size:15px}
+.item .tags{display:flex;flex-wrap:wrap;gap:6px}
+.item .tags span{font-family:var(--pixel);font-size:10px;text-transform:uppercase;padding:5px 7px;border-radius:5px;background:var(--panel-2)}
+.count{font-family:var(--pixel);font-size:12px;color:var(--muted)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.svc{border:1px solid var(--line);border-radius:18px;padding:26px;display:grid;gap:12px;align-content:start;background:var(--panel)}
+.svc.hot{background:var(--red);border-color:var(--red)}
+.svc .n{display:flex;justify-content:space-between;align-items:center;font-family:var(--pixel);font-size:11px;text-transform:uppercase}
+.svc .n i{font-style:normal;padding:4px 8px;border-radius:5px;background:var(--ink);color:var(--white)}
+.svc h3{font-size:26px;font-weight:900;font-stretch:115%;text-transform:uppercase;line-height:1}
+.svc p{color:var(--muted);font-size:15px}
+.svc.hot p,.svc.hot li{color:var(--white)}
+.svc ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:15px;color:var(--paper)}
+.svc .for{font-family:var(--pixel);font-size:10px;text-transform:uppercase;color:var(--muted)}
+.svc.hot .for{color:var(--white);opacity:.85}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border-radius:12px;background:var(--ink);color:var(--white);text-decoration:none;font-family:var(--pixel);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
 .btn.ghost{background:transparent;border:2px solid var(--white)}
@@ -136,6 +182,7 @@ nav ul a:hover{color:var(--paper)}
 footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:var(--muted);padding-top:32px}
 
 @media (max-width:900px){
+  .work{grid-template-columns:repeat(2,minmax(0,1fr))}
   .do,.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .builds{grid-template-columns:1fr}
   .links-wrap{grid-template-columns:1fr}
@@ -145,14 +192,15 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
   .story-cols,.formats{grid-template-columns:1fr}
   .hero{grid-template-columns:1fr;padding:28px 22px}
   .hero-art{order:-1;justify-items:start}
-  .sticker{width:min(64%,240px)}
+  .face-stage{width:min(64%,240px)}
+  .work,.services{grid-template-columns:1fr}
   .glasses{left:auto;right:6%;bottom:6%;width:34%}
   nav ul{display:none}
   .contact{grid-template-columns:1fr;padding:28px 22px}
   .mini{display:none}
 }
 @media (max-width:420px){ .do,.facts{grid-template-columns:1fr} }
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .sticker,.build,.link{transition:none} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .sticker,.build,.link,.item,.glasses{transition:none} .track{animation:none} }
 </style>
 </head>
 <body>
@@ -161,10 +209,10 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
   <nav>
     <a class="me" href="#top"><img src="assets/avatar.jpg" alt=""><span class="px">@heyartzy</span></a>
     <ul class="px">
+      <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#builds">Builds</a></li>
-      <li><a href="#links">Links</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -180,14 +228,27 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
       </div>
     </div>
     <div class="hero-art">
-      <div class="sticker"><img src="assets/avatar.jpg" alt="Artzy in pixel sunglasses on his red sticker-art background"></div>
+      <div class="face-stage">
+        <button class="sticker" id="face" type="button" aria-label="Flip the card">
+          <span class="side front">
+            <img class="look-c" src="assets/avatar.jpg" alt="Artzy in pixel sunglasses on his red sticker-art background">
+            <span class="shine"></span>
+          </span>
+          <span class="side back">
+            <span class="px">hi, it's me</span>
+            <b>Creative since day one of ChatGPT</b>
+            <p>AI videos, art and tools, every day.</p>
+          </span>
+        </button>
+      </div>
       <svg class="glasses" viewBox="0 0 34 8" aria-hidden="true" shape-rendering="crispEdges">
         <rect x="0" y="0" width="34" height="2" fill="#0a0a0a"/>
         <rect x="3" y="2" width="12" height="3" fill="#0a0a0a"/><rect x="4" y="5" width="10" height="1" fill="#0a0a0a"/><rect x="5" y="6" width="8" height="1" fill="#0a0a0a"/>
         <rect x="19" y="2" width="12" height="3" fill="#0a0a0a"/><rect x="20" y="5" width="10" height="1" fill="#0a0a0a"/><rect x="21" y="6" width="8" height="1" fill="#0a0a0a"/>
-        <rect x="5" y="2" width="2" height="1" fill="#ffffff"/><rect x="7" y="3" width="2" height="1" fill="#ffffff"/>
-        <rect x="21" y="2" width="2" height="1" fill="#ffffff"/><rect x="23" y="3" width="2" height="1" fill="#ffffff"/>
+        <g id="glint"><rect x="5" y="2" width="2" height="1" fill="#ffffff"/><rect x="7" y="3" width="2" height="1" fill="#ffffff"/>
+        <rect x="21" y="2" width="2" height="1" fill="#ffffff"/><rect x="23" y="3" width="2" height="1" fill="#ffffff"/></g>
       </svg>
+      <span class="hint">tap me</span>
     </div>
   </header>
 
@@ -197,6 +258,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
     <div class="fact"><b>2021</b><span>in crypto since</span></div>
     <div class="fact"><b>Op3n</b><span>AI short film, activation winner</span></div>
   </div>
+
+  <div class="marquee" aria-label="Topics"><div class="track"><span>AI video</span><span>Content creation</span><span>AI art</span><span>Vibe coding</span><span>AI × web3</span><span>Build in public</span><span>Self-custody</span><span aria-hidden="true">AI video</span><span aria-hidden="true">Content creation</span><span aria-hidden="true">AI art</span><span aria-hidden="true">Vibe coding</span><span aria-hidden="true">AI × web3</span><span aria-hidden="true">Build in public</span><span aria-hidden="true">Self-custody</span></div></div>
 
   <section aria-labelledby="story">
     <div class="story">
@@ -288,26 +351,30 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;color:
     </ol>
   </section>
 
-  <section id="builds" aria-labelledby="bld">
-    <div class="head"><p class="px red">Builds</p><h2 id="bld">Things I've shipped</h2></div>
-    <div class="builds">
-      <a class="build" href="https://github.com/webartzy/final-say" target="_blank" rel="noopener">
-        <div class="top"><h3>FinalSay</h3><span class="go">GitHub ↗</span></div>
-        <p>An AI payroll agent that can't press send. AI prepares, Ledger shows, a human decides.</p>
-        <div class="stack"><span>Ledger</span><span>Rust</span><span>React</span><span>AI agent</span></div>
-      </a>
-      <a class="build" href="https://github.com/webartzy/agent-pays-agent-" target="_blank" rel="noopener">
-        <div class="top"><h3>Agent Pays Agent</h3><span class="go">GitHub ↗</span></div>
-        <p>An agent starts a USDC payment through x402. A human approves it on Ledger before anything moves.</p>
-        <div class="stack"><span>x402</span><span>USDC</span><span>Ledger</span></div>
-      </a>
-      <a class="build" href="https://ai-behavior-designer.vercel.app" target="_blank" rel="noopener">
-        <div class="top"><h3>AI Behavior Designer</h3><span class="go">Live ↗</span></div>
-        <p>Design how an AI should behave before writing a single prompt. Open-source playground for builders.</p>
-        <div class="stack"><span>Open source</span><span>Playground</span></div>
-      </a>
+  <section id="work" aria-labelledby="wk">
+    <div class="work-head">
+      <div class="head"><p class="px red">Selected work</p><h2 id="wk">Made, built &amp; written</h2></div>
+      <div class="filters" role="group" aria-label="Filter work">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="video" aria-pressed="false">AI video</button>
+        <button type="button" data-f="build" aria-pressed="false">Builds</button>
+        <button type="button" data-f="writing" aria-pressed="false">Writing</button>
+      </div>
     </div>
-    <p class="muted" style="font-size:15px">More on <a href="https://github.com/webartzy" target="_blank" rel="noopener">github.com/webartzy</a></p>
+    <p class="count" id="count"></p>
+    <div class="work" id="workGrid"></div>
+    <p class="muted" style="font-size:15px">More builds on <a href="https://github.com/webartzy" target="_blank" rel="noopener">github.com/webartzy</a> · new videos and posts on <a href="https://x.com/heyartzy" target="_blank" rel="noopener">X</a></p>
+  </section>
+
+  <section id="services" aria-labelledby="sv">
+    <div class="head"><p class="px red">Work with me</p><h2 id="sv">What I can make for you</h2><p class="muted">For AI and web3 projects with something real to show.</p></div>
+    <div class="services">
+      <div class="svc hot"><div class="n"><span>01</span><i>Open</i></div><h3>AI video</h3><p>Cinematic shorts, launch films and product stories made with the newest video models. Written, prompted, directed and edited by me.</p><ul><li>Launch teasers and announcement films</li><li>Product walkthroughs told as a story</li><li>Vertical cuts for X, Reels and Shorts</li></ul><span class="for">For launches, features and big updates</span></div>
+      <div class="svc"><div class="n"><span>02</span><i>Open</i></div><h3>Creator collabs</h3><p>I use your product for real, then explain it in my own voice for people who build and create with AI.</p><ul><li>X thread or long post</li><li>Short video for X, Reels or Shorts</li><li>Always marked as sponsored, only projects I'd use</li></ul><span class="for">For AI tools and web3 products</span></div>
+      <div class="svc"><div class="n"><span>03</span><i>Open</i></div><h3>Creative direction</h3><p>Visual concepts, storyboards and style boards before anything gets generated, so the result looks like your brand and not a template.</p><ul><li>Moodboards and storyboards</li><li>Consistent characters and scenes</li><li>Matching stills for every channel</li></ul><span class="for">For teams starting an AI campaign</span></div>
+      <div class="svc"><div class="n"><span>04</span><i>Open</i></div><h3>AI demos &amp; tools</h3><p>A small, working demo that shows your idea in action, vibe-coded fast and shared in public.</p><ul><li>Agent and onchain demos</li><li>Open-source repo and write-up</li><li>Launch post and walkthrough video</li></ul><span class="for">For builders who need a demo people can try</span></div>
+    </div>
+    <a class="btn-line" href="#contact">Start with an email ↓</a>
   </section>
 
   <section id="links" aria-labelledby="lnk">
@@ -345,6 +412,64 @@ document.getElementById('copy').addEventListener('click',function(){
   function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
   try{navigator.clipboard.writeText(v).then(done,sel)}catch(e){sel()}
 });
+
+/* edit this list to add or remove work */
+var WORK=[
+ {t:"FinalSay",f:"build",d:"Sep 2026",s:"Shipped",u:"https://github.com/webartzy/final-say",p:"An AI payroll agent that can't press send. AI prepares, Ledger shows, a human decides.",g:["Ledger","Rust","AI agent"]},
+ {t:"Agent Pays Agent",f:"build",d:"Jun 2026",s:"Shipped",u:"https://x.com/heyartzy/status/2069137939330744575",p:"An agent starts a USDC payment through x402 and a human approves it on Ledger before anything moves. 6.7K views.",g:["x402","USDC","video"]},
+ {t:"AI Behavior Designer",f:"build",d:"Jul 2026",s:"Live",u:"https://ai-behavior-designer.vercel.app",p:"Design how an AI should behave before writing a single prompt. Open-source playground for builders.",g:["open source","playground"]},
+ {t:"Don't fade this day",f:"video",d:"Oct 2025",s:"Winner",u:"https://x.com/heyartzy/status/1979941155807629621",p:"A 48-second AI short film for Ledger Op3n that won the community activation. 5.3K views.",g:["cinematic","short film"]},
+ {t:"Outfit transition",f:"video",d:"Aug 2026",s:"Video",u:"https://x.com/heyartzy/status/2093740845832757582",p:"A character reference and a style board turned into a full outfit-transition video with Seedance 2.5.",g:["Seedance","fashion"]},
+ {t:"Day 257 / 365",f:"video",d:"Sep 2026",s:"Video",u:"https://x.com/heyartzy/status/2099536650875326522",p:"A cinematic daily journal clip made on ImagineArt, part of my build-in-public series.",g:["ImagineArt","journal"]},
+ {t:"AI video is a sequence, not a prompt",f:"writing",d:"Jul 2026",s:"Guide",u:"https://x.com/heyartzy/status/2082508629689733588",p:"Why I stopped treating AI video like one big prompt, and the shot-by-shot workflow that replaced it.",g:["guide","workflow"]},
+ {t:"I asked AI for my bank's number",f:"writing",d:"Sep 2026",s:"Thread",u:"https://x.com/heyartzy/status/2103177524301709313",p:"It gave me a scammer's. How a zero-dollar attack teaches AI assistants to lie.",g:["thread","security"]},
+ {t:"AI is eating software",f:"writing",d:"Mar 2026",s:"Post",u:"https://x.com/heyartzy/status/2032816831224795427",p:"Why software security might be reaching its limits, and why trust needs hardware. 1.5K views.",g:["AI","security"]}
+];
+(function(){
+  var grid=document.getElementById('workGrid'),count=document.getElementById('count');
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function render(f){
+    var list=WORK.filter(function(w){return f==='all'||w.f===f});
+    count.textContent=String(list.length).padStart(2,'0')+' pieces';
+    grid.innerHTML=list.map(function(w){return '<a class="item" href="'+esc(w.u)+'" target="_blank" rel="noopener"><span class="meta"><span>'+esc(w.d)+'</span><span class="status'+(w.s==='Live'?' live':'')+'">'+esc(w.s)+'</span></span><h3>'+esc(w.t)+'</h3><p>'+esc(w.p)+'</p><span class="tags">'+w.g.map(function(g){return '<span>'+esc(g)+'</span>'}).join('')+'</span></a>'}).join('');
+  }
+  document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    render(b.dataset.f);
+  })});
+  render('all');
+})();
+
+/* face follows the cursor: tilt, shine, glasses glint, and left/right photos if present */
+(function(){
+  var face=document.getElementById('face'),stage=face.parentNode,glasses=document.querySelector('.glasses'),glint=document.getElementById('glint');
+  /* set to true after adding assets/look-l.jpg and assets/look-r.jpg (same framing, looking left and right) */
+  var HAS_LOOKS=false;
+  var shine=face.querySelector('.shine'),C=face.querySelector('.look-c'),L=null,R=null;
+  if(HAS_LOOKS){['l','r'].forEach(function(k){var im=document.createElement('img');im.className='look-'+k;im.alt='';im.src='assets/look-'+k+'.jpg';C.after(im);if(k==='l')L=im;else R=im;});}
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches,raf=0,px=0,py=0,idle=null;
+  function apply(x,y){
+    face.style.setProperty('--ry',(x*18).toFixed(2)+'deg');
+    face.style.setProperty('--rx',(-y*12).toFixed(2)+'deg');
+    shine.style.setProperty('--sx',(50+x*40)+'%');shine.style.setProperty('--sy',(30+y*40)+'%');
+    glasses.style.setProperty('--gx',(x*14).toFixed(1)+'px');glasses.style.setProperty('--gy',(y*8).toFixed(1)+'px');
+    glint.setAttribute('transform','translate('+(x*2.5).toFixed(2)+' 0)');
+    if(L&&L.isConnected&&R&&R.isConnected){var a=Math.min(1,Math.abs(x)*1.6);C.style.opacity=String(1-a);L.style.opacity=x<0?String(a):'0';R.style.opacity=x>0?String(a):'0';}
+  }
+  function track(cx,cy){
+    px=cx;py=cy;if(raf)return;
+    raf=requestAnimationFrame(function(){raf=0;var r=stage.getBoundingClientRect();
+      var x=Math.max(-1,Math.min(1,(px-(r.left+r.width/2))/(window.innerWidth/2)));
+      var y=Math.max(-1,Math.min(1,(py-(r.top+r.height/2))/(window.innerHeight/2)));
+      apply(x,y);});
+  }
+  if(!still){
+    document.addEventListener('pointermove',function(e){if(idle){clearInterval(idle);idle=null}track(e.clientX,e.clientY)},{passive:true});
+    document.documentElement.addEventListener('pointerleave',function(){apply(0,0)});
+    if(matchMedia('(hover: none)').matches){var seq=[[0,0],[-.7,-.1],[0,0],[.7,-.1]],i=0;idle=setInterval(function(){i=(i+1)%seq.length;apply(seq[i][0],seq[i][1])},1600);}
+  }
+  face.addEventListener('click',function(){face.classList.toggle('flip')});
+})();
 </script>
 </body>
 </html>
